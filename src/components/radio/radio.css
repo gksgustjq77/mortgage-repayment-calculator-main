@@ -1,0 +1,16 @@
+/* input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  accent-color: hsl(61, 70%, 52%);
+  background-color: blue;
+}
+
+// 체크될 시에, 변화되는 스타일 설정
+input[type="radio"]:checked {
+  background-color: #22d3ee;
+  border: 3px solid white;
+  box-shadow: 0 0 0 1.6px #22d3ee;
+} */
