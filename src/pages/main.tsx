@@ -7,7 +7,7 @@ const Main: React.FC = () => {
       <div className="flex flex-col sm:flex-row items-stretch justify-center bg-white rounded-[20px] overflow-hidden shadow-md">
         <Calculator></Calculator>
 
-        <Result resultType={""}></Result>
+        {/* <Result resultType={""}></Result> */}
       </div>
     </>
   );

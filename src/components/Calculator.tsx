@@ -6,6 +6,8 @@ import { radioOptions } from "../type/calc/radioType";
 import { inputOptions } from "../type/input/inputType";
 import Button from "./button/Button";
 import { formatNumberWithCommas } from "../util/FormatUtil";
+import Result from "./Result";
+import type { repaymentType } from "../type/calc/repaymentType";
 
 const Calculator: React.FC = () => {
   const [selectedType, setSelectedType] = useState("repayment");
@@ -16,7 +18,7 @@ const Calculator: React.FC = () => {
     years: 0.0, // 상환 기간
   });
 
-  const [repaymentInfo, setRepaymentInfo] = useState({
+  const [repaymentInfo, setRepaymentInfo] = useState<repaymentType>({
     monthlyPayment: null as number | null,
     totalPayment: null as number | null,
     totalInterest: null as number | null,
@@ -61,54 +63,68 @@ const Calculator: React.FC = () => {
     });
   };
 
+  const clearCalc = () => {
+    setLoanInfo({
+      principal: 0, // 원금
+      annualRate: 0.0, // 연이자율
+      years: 0.0, // 상환 기간
+    });
+  };
+
   return (
     <>
-      <div className="flex flex-col gap-[20px] bg-white rounded-t-[20px] sm:rounded-tl-[20px] sm:rounded-bl-[20px] sm:rounded-tr-none sm:rounded-br-none w-full sm:w-[500px] h-[400px] sm:h-[600px] p-6">
-        <CalcTitle></CalcTitle>
+      <div className="flex">
+        <div className="flex flex-col gap-[20px] bg-white rounded-t-[20px] sm:rounded-tl-[20px] sm:rounded-bl-[20px] sm:rounded-tr-none sm:rounded-br-none w-full sm:w-[500px] h-[400px] sm:h-[600px] p-6">
+          <CalcTitle clear={clearCalc}></CalcTitle>
 
-        <InputGate
-          type="principal"
-          title="Mortgage Amount"
-          value={loanInfo.principal}
-          onChange={(value, type) =>
-            updateLoanInfo(type as keyof typeof loanInfo, value)
-          }
-        />
+          <InputGate
+            type="principal"
+            title="Mortgage Amount"
+            value={loanInfo.principal}
+            onChange={(value, type) =>
+              updateLoanInfo(type as keyof typeof loanInfo, value)
+            }
+          />
 
-        <div className="flex gap-4">
-          {inputOptions.map((option) => (
-            <InputGate
-              key={option.type}
-              type={option.type}
-              title={option.title}
-              value={loanInfo[option.type]}
-              onChange={(value, type) =>
-                updateLoanInfo(type as keyof typeof loanInfo, value)
-              }
-            />
-          ))}
-        </div>
-
-        <div>
-          <h1 className="text-[hsl(200,26%,54%)] text-left mb-[10px]">
-            {"Mortgage Type"}
-          </h1>
-          <div className="flex flex-col gap-4">
-            {radioOptions.map((option) => (
-              <RadioComponent
-                key={option.id}
-                label={option.label}
-                value={option.value}
-                name="interestType"
-                checked={selectedType === option.value}
-                onChange={(e) => setSelectedType(e.target.value)}
+          <div className="flex gap-4">
+            {inputOptions.map((option) => (
+              <InputGate
+                key={option.type}
+                type={option.type}
+                title={option.title}
+                value={loanInfo[option.type]}
+                onChange={(value, type) =>
+                  updateLoanInfo(type as keyof typeof loanInfo, value)
+                }
               />
             ))}
           </div>
+
+          <div>
+            <h1 className="text-[hsl(200,26%,54%)] text-left mb-[10px]">
+              {"Mortgage Type"}
+            </h1>
+            <div className="flex flex-col gap-4">
+              {radioOptions.map((option) => (
+                <RadioComponent
+                  key={option.id}
+                  label={option.label}
+                  value={option.value}
+                  name="interestType"
+                  checked={selectedType === option.value}
+                  onChange={(e) => setSelectedType(e.target.value)}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="mt-[20px]">
+            <Button
+              title={"Calculate Repayments"}
+              onClick={Repayments}
+            ></Button>
+          </div>
         </div>
-        <div className="mt-[20px]">
-          <Button title={"Calculate Repayments"} onClick={Repayments}></Button>
-        </div>
+        <Result resultType={""} props={repaymentInfo}></Result>
       </div>
     </>
   );
