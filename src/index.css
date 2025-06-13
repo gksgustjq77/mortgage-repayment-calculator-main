@@ -32,6 +32,12 @@ body {
   @apply font-jakarta;
 }
 
+@media (max-width: 1200px) {
+  body {
+    display: block;
+  }
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

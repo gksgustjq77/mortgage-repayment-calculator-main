@@ -5,7 +5,6 @@ import RadioComponent from "./radio/RadioComponent";
 import { radioOptions } from "../type/calc/radioType";
 import { inputOptions } from "../type/input/inputType";
 import Button from "./button/Button";
-import { formatNumberWithCommas } from "../util/FormatUtil";
 import Result from "./Result";
 import type { repaymentType } from "../type/calc/repaymentType";
 
@@ -73,8 +72,8 @@ const Calculator: React.FC = () => {
 
   return (
     <>
-      <div className="flex">
-        <div className="flex flex-col gap-[20px] bg-white rounded-t-[20px] sm:rounded-tl-[20px] sm:rounded-bl-[20px] sm:rounded-tr-none sm:rounded-br-none w-full sm:w-[500px] h-[400px] sm:h-[600px] p-6">
+      <div className="md:flex md:flex-row sm:flex-col">
+        <div className="flex flex-col gap-[20px] bg-white rounded-t-[20px] sm:rounded-none sm:rounded-tl-[20px] sm:rounded-bl-[20px] sm:rounded-tr-none sm:rounded-br-none w-full sm:w-[500px] sm:h-[600px] p-6">
           <CalcTitle clear={clearCalc}></CalcTitle>
 
           <InputGate

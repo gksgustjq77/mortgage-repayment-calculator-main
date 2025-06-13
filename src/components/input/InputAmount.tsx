@@ -1,5 +1,3 @@
-import { formatNumberWithCommas } from "../../util/FormatUtil";
-
 interface InputAmountProps {
   amount: number;
   type: string; // "term" | "interest"
