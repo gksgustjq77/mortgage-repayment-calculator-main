@@ -1,7 +1,7 @@
 const EmptyResult: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col justify-center gap-[50px] bg-[hsl(202,55%,16%)] text-white rounded-none lg:rounded-bl-[70px] lg:rounded-b-[20px]  w-full sm:w-[500px] h-[400px] sm:h-[600px] p-6">
+      <div className="flex flex-col justify-center gap-[3rem] bg-[hsl(202,55%,16%)] text-white rounded-none lg:rounded-bl-[70px] lg:rounded-b-[20px]  w-full sm:w-[500px] h-[400px] sm:h-[600px] p-6">
         <div className="flex flex-col items-center justify-center gap-[15px]">
           <img src="/images/illustration-empty.svg"></img>
           <p className="text-[20px] font-semibold text-left">

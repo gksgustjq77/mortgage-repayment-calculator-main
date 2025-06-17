@@ -8,7 +8,7 @@ interface RepaymentsProps {
 const Repayments: React.FC<RepaymentsProps> = ({ props }) => {
   return (
     <div
-      className="flex flex-col gap-8 bg-[hsl(202,55%,16%)] text-white 
+      className="flex flex-col gap-[3rem] bg-[hsl(202,55%,16%)] text-white 
       rounded-none sm:rounded-tr-[20px] sm:rounded-br-[20px] sm:rounded-tl-none sm:rounded-bl-none 
       lg:rounded-bl-[70px] sm:rounded-b-[20px]
       w-full sm:w-[500px] h-[100%] sm:h-[600px] p-4 sm:p-6"
