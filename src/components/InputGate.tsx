@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import InputAmount from "./input/InputAmount";
 import InputTermRate from "./input/InputTermRate";
 interface InputGateProps {
@@ -19,7 +19,7 @@ const InputGate: React.FC<InputGateProps> = ({
 }) => {
   const [amount, setAmount] = useState<number>(0);
 
-  const handleChange = (value: number, t: string) => {
+  const handleChange = (value: number) => {
     setAmount(value);
     onChange(value, type);
   };
